@@ -11,7 +11,7 @@ const Login = () => {
       setLoading(true);
       const { data } = await axios.post("/users/login", values);
       setLoading(false);
-      message.success("login success");
+      message.success("Login successful");
       localStorage.setItem(
         "user",
         JSON.stringify({ ...data.user, password: "" })
@@ -30,7 +30,7 @@ const Login = () => {
   }, [navigate]);
   return (
     <>
-      <div className="resgister-page ">
+      <div className="register-page">
         {loading && <Spinner />}
         <Form layout="vertical" onFinish={submitHandler}>
           <h1>Login Form</h1>
@@ -41,8 +41,8 @@ const Login = () => {
           <Form.Item label="Password" name="password">
             <Input type="password" />
           </Form.Item>
-          <div className="d-flex justify-content-between">
-            <Link to="/register">Not a user ? Cleck Here to regsiter</Link>
+          <div className="d-flex flex-column justify-content-between">
+            <Link to="/register" className="p-2">Not a user ? Cleck Here to register</Link>
             <button className="btn btn-primary">Login</button>
           </div>
         </Form>
